@@ -13,5 +13,8 @@ setup: ## Establish local environment with dependencies installed
 up: ## Build and run the required containers by fetching binaries
 	docker-compose -f docker-compose.yaml up -d
 
-shell: ## Start Flask CLI shell
-	FLASK_APP=app/app.py FLASK_SECRETS=config.py FLASK_DEBUG=0 FLASK_ENV=production .venv/bin/flask shell
+shell: ## Start Quart CLI shell
+	QUART_APP=app.py QUART_SECRETS=config.py QUART_DEBUG=0 QUART_ENV=production .venv/bin/quart shell
+
+dev: ## Start Quart development web server
+	QUART_APP=app.py QUART_SECRETS=config.py QUART_DEBUG=0 QUART_ENV=production .venv/bin/quart run

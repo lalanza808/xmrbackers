@@ -6,7 +6,7 @@ from os import getenv
 load_dotenv()
 
 # Site meta
-SITE_NAME = getenv('SITE_NAME', 'MyApp')
+SITE_NAME = getenv('SITE_NAME', 'xmrbackers')
 SECRET_KEY = getenv('SECRET_KEY')
 STATS_TOKEN = getenv('STATS_TOKEN', token_urlsafe(8))
 SERVER_NAME = getenv('SERVER_NAME', 'localhost:5000')
@@ -21,8 +21,8 @@ XMR_DAEMON_URI = getenv('XMR_DAEMON_URI')
 # Database
 DB_HOST = getenv('DB_HOST', 'localhost')
 DB_PORT = getenv('DB_PORT', 5432)
-DB_NAME = getenv('DB_NAME', 'myapp')
-DB_USER = getenv('DB_USER', 'myapp')
+DB_NAME = getenv('DB_NAME', 'xmrbackers')
+DB_USER = getenv('DB_USER', 'xmrbackers')
 DB_PASS = getenv('DB_PASS')
 
 # Redis

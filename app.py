@@ -1,4 +1,4 @@
-from myapp.factory import create_app
+from xmrbackers.factory import create_app
 
 
 app = create_app()
