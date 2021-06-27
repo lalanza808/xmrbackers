@@ -1,5 +1,3 @@
-Flask
-Flask-SQLAlchemy
 Flask-WTF
 flask-login
 hypercorn
@@ -8,6 +6,7 @@ psycopg2-binary
 python-dotenv
 qrcode
 redis
+peewee
 requests
 SQLAlchemy
 WTForms

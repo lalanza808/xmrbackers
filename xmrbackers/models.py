@@ -1,31 +1,45 @@
 from datetime import datetime
 from uuid import uuid4
 
-from sqlalchemy.sql import func
+import peewee as pw
+from peewee import PostgresqlDatabase, SQL, ForeignKeyField
 
-from xmrbackers.factory import db
 from xmrbackers import config
 
+
+db = PostgresqlDatabase(
+    config.DB_NAME,
+    user=config.DB_USER,
+    password=config.DB_PASS,
+    host=config.DB_HOST,
+)
 
 def rand_id():
     return uuid4().hex
 
-class Creator(db.Model):
-    __tablename__ = 'creators'
 
-    id = db.Column(db.Integer, primary_key=True)
-    # id = db.Column(db.String(80), primary_key=True, default=rand_id) # hex based id
-    register_date = db.Column(db.DateTime, server_default=func.now())
-    last_login_date = db.Column(db.DateTime, nullable=True)
-    wallet_address = db.Column(db.String(150))
-    password = db.Column(db.String(150))
-    email = db.Column(db.String(150))
-    handle = db.Column(db.String(150))
+class Creator(pw.Model):
+    id = pw.AutoField()
+    register_date = pw.DateTimeField(default=datetime.now)
+    last_login_date = pw.DateTimeField(default=datetime.now)
+    wallet_address = pw.CharField()
+    username = pw.CharField(unique=True)
+    email = pw.CharField(unique=True)
+    password = pw.CharField(unique=True)
+    bio = pw.CharField()
 
-    def __repr__(self):
-        return self.id
+    class Meta:
+        database = db
 
-class Backer(db.Model):
-    __tablename__ = 'backers'
 
-    id = db.Column(db.Integer, primary_key=True)
+class Backer(pw.Model):
+    id = pw.AutoField()
+    register_date = pw.DateTimeField(default=datetime.now)
+    last_login_date = pw.DateTimeField(default=datetime.now)
+    wallet_address = pw.CharField()
+    username = pw.CharField(unique=True)
+    email = pw.CharField(unique=True)
+    password = pw.CharField(unique=True)
+
+    class Meta:
+        database = db

@@ -2,10 +2,8 @@ import click
 
 
 def cli(app):
-    @app.cli.command('init')
-    def init():
-        import xmrbackers.models
-        from xmrbackers.factory import db
-        db.create_all()
+    @app.cli.command('echo')
+    def echo():
+        click.echo('Hello world!')
 
     return app

@@ -10,8 +10,11 @@ setup: ## Establish local environment with dependencies installed
 	python3 -m venv .venv
 	.venv/bin/pip install -r requirements.txt
 
-up: ## Build and run the required containers by fetching binaries
-	docker-compose -f docker-compose.yaml up -d
+up: ## Start containers
+	docker-compose up -d
+
+down: ## Stop containers
+	docker-compose down
 
 shell: ## Start Quart CLI shell
 	QUART_APP=app.py QUART_SECRETS=config.py QUART_DEBUG=0 QUART_ENV=production .venv/bin/quart shell
