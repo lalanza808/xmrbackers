@@ -17,4 +17,4 @@ shell: ## Start Quart CLI shell
 	QUART_APP=app.py QUART_SECRETS=config.py QUART_DEBUG=0 QUART_ENV=production .venv/bin/quart shell
 
 dev: ## Start Quart development web server
-	QUART_APP=app.py QUART_SECRETS=config.py QUART_DEBUG=0 QUART_ENV=production .venv/bin/quart run
+	QUART_APP=app.py QUART_SECRETS=config.py QUART_DEBUG=1 QUART_ENV=development .venv/bin/quart run
