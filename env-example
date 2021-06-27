@@ -1,0 +1,16 @@
+DB_PASS=xxxxxxxxxxxxxxxxxxx
+DB_USER=myapp
+DB_NAME=myapp
+DB_HOST=localhost
+
+XMR_WALLET_PATH=/data/xmr-wallet
+XMR_WALLET_PASS=xxxxxxxxxxxxxxxxxxx
+XMR_WALLET_RPC_USER=xxxxxxxxxx
+XMR_WALLET_RPC_PASS=xxxxxxxxxxxxxxxxxxx
+XMR_WALLET_RPC_ENDPOINT=http://localhost:9090
+XMR_DAEMON_URI=http://super.fast.node.xmr.pm:38089
+
+SITE_NAME=myapp
+SECRET_KEY=xxxxxxxxxxxxxxxxxxx
+STATS_TOKEN=xxxxxxxxxxxxxxxxxxxx
+SERVER_NAME=localhost:5000

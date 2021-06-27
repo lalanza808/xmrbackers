@@ -1,0 +1,14 @@
+Flask
+Flask-SQLAlchemy
+Flask-WTF
+flask-login
+gunicorn
+Pillow
+psycopg2-binary
+python-dotenv
+qrcode
+redis
+requests
+SQLAlchemy
+WTForms
+quart

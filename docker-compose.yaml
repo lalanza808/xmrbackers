@@ -1,0 +1,16 @@
+version: '3'
+services:
+  db:
+    image: postgres:9.6.15-alpine
+    ports:
+      - 127.0.0.1:5432:5432
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_USER: ${DB_USER:-myapp}
+      POSTGRES_DB: ${DB_NAME:-myapp}
+    volumes:
+      - ${DATA_DIR:-./data/postgresql}:/var/lib/postgresql/data
+  cache:
+    image: redis:latest
+    ports:
+      - 127.0.0.1:6379:6379
