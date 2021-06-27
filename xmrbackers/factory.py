@@ -2,6 +2,7 @@ import quart.flask_patch
 from quart import Quart
 from flask_sqlalchemy import SQLAlchemy
 
+from xmrbackers.cli import cli
 from xmrbackers import config
 
 
@@ -22,16 +23,14 @@ async def _setup_db(app: Quart):
 def create_app():
     app = Quart(__name__)
     app.config.from_envvar('QUART_SECRETS')
-
-
+    app = cli(app)
     @app.before_serving
     async def startup():
         from xmrbackers.routes import meta, api
-        from xmrbackers import filters, cli
+        from xmrbackers import filters
         await _setup_db(app)
         app.register_blueprint(meta.bp)
         app.register_blueprint(api.bp)
         app.register_blueprint(filters.bp)
-        app.register_blueprint(cli.bp)
 
     return app

@@ -2,7 +2,7 @@ Flask
 Flask-SQLAlchemy
 Flask-WTF
 flask-login
-gunicorn
+hypercorn
 Pillow
 psycopg2-binary
 python-dotenv
