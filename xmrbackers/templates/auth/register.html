@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+
+	{% include 'includes/head.html' %}
+
+	<body class="is-preload landing">
+		<div id="page-wrapper">
+
+				<section id="banner">
+					<div class="content">
+						<header>
+							<h2>Register</h2>
+              <p>Authenticated: {{ current_user.is_authenticated }}</p>
+              <form>
+              {{ form.username }}
+              {{ form.password }}
+              {{ form.email }}
+              </form>              
+						</header>
+						<span class="image"><img src="/static/images/monero-logo.png" width=150px></span>
+					</div>
+					<a href="#swap" class="goto-next scrolly">Next</a>
+				</section>
+
+				{% include 'includes/footer.html' %}
+
+		</div>
+
+		{% include 'includes/scripts.html' %}
+
+	</body>
+</html>

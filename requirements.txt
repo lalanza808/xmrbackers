@@ -1,5 +1,6 @@
 Flask-WTF
 flask-login
+flask-bcrypt
 hypercorn
 Pillow
 psycopg2-binary
