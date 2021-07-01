@@ -16,8 +16,8 @@ async def _setup_db(app: Quart):
 
 def create_app():
     app = Quart(__name__)
-    app.config.from_envvar('QUART_SECRETS')
     app = cli(app)
+    app.config.from_envvar('QUART_SECRETS')
     @app.before_serving
     async def startup():
         from xmrbackers.routes import meta, api, auth
