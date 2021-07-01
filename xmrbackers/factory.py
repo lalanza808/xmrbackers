@@ -23,5 +23,4 @@ def create_app():
         app.register_blueprint(meta.bp)
         app.register_blueprint(api.bp)
         app.register_blueprint(filters.bp)
-
     return cli(app)
