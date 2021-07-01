@@ -6,24 +6,15 @@
 	<body class="is-preload landing">
 		<div id="page-wrapper">
 
-				<header id="header">
-					<h1 id="logo"><a href="/">MyThing sample app</a></h1>
-					<nav id="nav">
-						<ul>
-							<li><a href="/register" class="button primary">Register</a></li>
-						</ul>
-					</nav>
-				</header>
+				{% include 'includes/header.html' %}
 
 				<section id="banner">
 					<div class="content">
 						<header>
-							<h2>MyThing</h2>
-							<p>This is a sample app.</p>
+							<p>This is a simple prototype and is under heavy development.</p>
 						</header>
 						<span class="image"><img src="/static/images/monero-logo.png" width=150px></span>
 					</div>
-					<a href="#swap" class="goto-next scrolly">Next</a>
 				</section>
 
 				{% include 'includes/footer.html' %}

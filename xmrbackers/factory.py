@@ -36,8 +36,8 @@ def create_app():
         @login_manager.user_loader
         def load_user(user_id):
             from xmrbackers.models import User
-            user = User.query.get(user_id)
-            return user.id
+            user = User.get(user_id)
+            return user
     return app
 
 bcrypt = Bcrypt(create_app())

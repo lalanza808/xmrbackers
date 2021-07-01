@@ -2,8 +2,27 @@
   <h1 id="logo"><a href="/">{{ config.SITE_NAME }}</a></h1>
   <nav id="nav">
     <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/#search" class="button primary">Search</a></li>
+      <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+      <li><a href="{{ url_for('auth.register') }}">Register</a></li>
+      <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
     </ul>
   </nav>
+  <p>Authenticated: {{ current_user.is_authenticated }}</p>
 </header>
+
+<script src="/static/js/noty.js"></script>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <script type="text/javascript">
+    {% for message in messages %}
+      new Noty({
+        type: 'error',
+        theme: 'relax',
+        layout: 'topCenter',
+        text: '{{ message }}',
+        timeout: 4500
+      }).show();
+    {% endfor %}
+  </script>
+  {% endif %}
+{% endwith %}
