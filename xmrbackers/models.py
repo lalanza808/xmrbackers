@@ -74,6 +74,7 @@ class BackerProfile(pw.Model):
     recurring emails and/or notifications. For now.
     """
     id = pw.AutoField()
+    user = pw.ForeignKeyField(User, backref='backer_profile')
     register_date = pw.DateTimeField(default=datetime.now)
     last_login_date = pw.DateTimeField(default=datetime.now)
     email = pw.CharField(unique=True, null=True)

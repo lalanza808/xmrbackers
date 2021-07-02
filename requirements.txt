@@ -12,3 +12,4 @@ requests
 SQLAlchemy
 WTForms
 quart
+monero

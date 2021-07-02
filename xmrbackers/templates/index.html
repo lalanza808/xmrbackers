@@ -8,6 +8,13 @@
 
 				{% include 'includes/header.html' %}
 
+				{% if feed %}
+					{% for k in feed %}
+						<h2>{{ k }}</h2>
+						<p>{{ feed[k]}}</p>
+					{% endfor %}
+				{% else %}
+
 				<section id="banner">
 					<div class="content">
 						<header>
@@ -16,6 +23,8 @@
 						<span class="image"><img src="/static/images/monero-logo.png" width=150px></span>
 					</div>
 				</section>
+
+				{% endif %}
 
 				{% include 'includes/footer.html' %}
 
