@@ -1,5 +1,6 @@
 from quart import Blueprint, render_template, flash, redirect, url_for
 
+from xmrbackers.forms import ConfirmSubscription
 from xmrbackers.models import User, CreatorProfile, TextPost, SubscriptionMeta
 
 
@@ -42,10 +43,22 @@ async def subscription(username):
         subscription_meta = SubscriptionMeta.select().where(
             SubscriptionMeta.creator == creator
         ).order_by(SubscriptionMeta.create_date.desc()).first()
+        form = ConfirmSubscription()
         return await render_template(
             'creator/subscription.html',
-            subscription_meta=subscription_meta
+            subscription_meta=subscription_meta,
+            form=form
         )
     else:
         await flash('That creator does not exist.')
+        return redirect(url_for('meta.index'))
+
+@bp.route('/subscription/<int:creator_id>/confirm', methods=['POST'])
+async def confirm_subscription(creator_id):
+    form = ConfirmSubscription()
+    if form.validate_on_submit():
+        
+        return redirect(url_for('meta.index'))
+    else:
+        await flash('Unable to accept form POST.')
         return redirect(url_for('meta.index'))
