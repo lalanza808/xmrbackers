@@ -1,3 +1,4 @@
+import arrow
 from datetime import datetime
 
 from quart import Blueprint, current_app
@@ -5,6 +6,10 @@ from quart import Blueprint, current_app
 
 bp = Blueprint('filters', 'filters')
 
+
+@bp.app_template_filter('humanize')
+def humanize(d):
+    return arrow.get(d).humanize()
 
 @bp.app_template_filter('ts')
 def from_ts(v):

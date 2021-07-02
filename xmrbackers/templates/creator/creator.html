@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+
+	{% include 'includes/head.html' %}
+
+	<body class="is-preload landing">
+		<div id="page-wrapper">
+
+				{% include 'includes/header.html' %}
+				
+				{% if creator %}
+          <h1>{{ creator.user.username }}</h1>
+          <p>Bio: {{ creator.bio }}</p>
+				{% endif %}
+
+				{% include 'includes/footer.html' %}
+
+		</div>
+
+		{% include 'includes/scripts.html' %}
+
+	</body>
+</html>

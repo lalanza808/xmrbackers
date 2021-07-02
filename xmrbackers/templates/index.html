@@ -11,7 +11,11 @@
 				{% if feed %}
 					{% for k in feed %}
 						<h2>{{ k }}</h2>
-						<p>{{ feed[k]}}</p>
+						{% if k == 'new_creators' %}
+							<p><a href="{{ url_for('creator.show', username=feed[k]) }}">{{ feed[k] }}</a></p>
+						{% else %}
+							<p>{{ feed[k]}}</p>
+						{% endif %}
 					{% endfor %}
 				{% else %}
 

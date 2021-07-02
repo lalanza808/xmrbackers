@@ -55,7 +55,6 @@ class CreatorProfile(pw.Model):
     id = pw.AutoField()
     user = pw.ForeignKeyField(User)
     create_date = pw.DateTimeField(default=datetime.now)
-    last_login_date = pw.DateTimeField(default=datetime.now)
     wallet_address = pw.CharField(null=True)
     website = pw.CharField(null=True)
     twitter_handle = pw.CharField(null=True)

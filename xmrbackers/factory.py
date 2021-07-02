@@ -20,12 +20,13 @@ def create_app():
     app.config.from_envvar('QUART_SECRETS')
     @app.before_serving
     async def startup():
-        from xmrbackers.routes import meta, api, auth
+        from xmrbackers.routes import meta, api, auth, creator
         from xmrbackers import filters
         await _setup_db(app)
         app.register_blueprint(meta.bp)
         app.register_blueprint(api.bp)
         app.register_blueprint(auth.bp)
+        app.register_blueprint(creator.bp)
         app.register_blueprint(filters.bp)
         login_manager = LoginManager(app)
 
