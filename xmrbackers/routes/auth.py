@@ -4,7 +4,7 @@ from quart import flash, redirect, url_for
 from flask_login import login_user, logout_user, current_user
 
 from xmrbackers.factory import bcrypt
-from xmrbackers.forms import Register, Login
+from xmrbackers.forms import UserAuth
 from xmrbackers.models import User
 
 
@@ -12,23 +12,22 @@ bp = Blueprint('auth', 'auth')
 
 @bp.route("/register", methods=["GET", "POST"])
 async def register():
-    form = Register()
+    form = UserAuth()
     if current_user.is_authenticated:
         await flash('Already registered and authenticated.')
         return redirect(url_for('meta.index'))
 
     if form.validate_on_submit():
-        # Check if email already exists
+        # Check if username already exists
         user = User.select().where(
-            User.email == form.email.data
+            User.username == form.username.data
         ).first()
         if user:
-            await flash('This email is already registered.')
+            await flash('This username is already registered.')
             return redirect(url_for('auth.login'))
 
         # Save new user
         user = User(
-            email=form.email.data,
             username=form.username.data,
             password=bcrypt.generate_password_hash(form.password.data).decode('utf8'),
         )
@@ -40,7 +39,7 @@ async def register():
 
 @bp.route("/login", methods=["GET", "POST"])
 async def login():
-    form = Login()
+    form = UserAuth()
     if current_user.is_authenticated:
         await flash('Already logged in.')
         return redirect(url_for('meta.index'))
@@ -48,7 +47,7 @@ async def login():
     if form.validate_on_submit():
         # Check if user doesn't exist
         user = User.select().where(
-            User.email == form.email.data
+            User.username == form.username.data
         ).first()
         if not user:
             await flash('Invalid username or password.')

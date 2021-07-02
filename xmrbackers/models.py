@@ -17,8 +17,7 @@ class User(pw.Model):
     register_date = pw.DateTimeField(default=datetime.now)
     last_login_date = pw.DateTimeField(default=datetime.now)
     username = pw.CharField(unique=True)
-    email = pw.CharField(unique=True)
-    password = pw.CharField(unique=True)
+    password = pw.CharField()
 
     @property
     def is_authenticated(self):
@@ -48,6 +47,9 @@ class CreatorProfile(pw.Model):
     create_date = pw.DateTimeField(default=datetime.now)
     last_login_date = pw.DateTimeField(default=datetime.now)
     wallet_address = pw.CharField(null=True)
+    website = pw.CharField(null=True)
+    twitter_handle = pw.CharField(null=True)
+    email = pw.CharField(unique=True, null=True)
     bio = pw.CharField()
 
     class Meta:
@@ -58,6 +60,7 @@ class BackerProfile(pw.Model):
     id = pw.AutoField()
     register_date = pw.DateTimeField(default=datetime.now)
     last_login_date = pw.DateTimeField(default=datetime.now)
+    email = pw.CharField(unique=True, null=True)
 
     class Meta:
         database = db

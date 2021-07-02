@@ -36,7 +36,7 @@ def create_app():
         @login_manager.user_loader
         def load_user(user_id):
             from xmrbackers.models import User
-            user = User.get(user_id)
+            user = User.get_or_none(user_id)
             return user
     return app
 
