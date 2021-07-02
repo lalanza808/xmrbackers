@@ -14,3 +14,4 @@ WTForms
 quart
 monero
 arrow
+flake8

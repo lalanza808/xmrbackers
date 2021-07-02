@@ -1,6 +1,7 @@
-import arrow
 from datetime import datetime
 
+import arrow
+import monero
 from quart import Blueprint, current_app
 
 
@@ -18,3 +19,7 @@ def from_ts(v):
 @bp.app_template_filter('xmr_block_explorer')
 def xmr_block_explorer(v):
     return f'https://www.exploremonero.com/transaction/{v}'
+
+@bp.app_template_filter('from_atomic')
+def from_atomic(amt):
+    return monero.numbers.from_atomic(amt)

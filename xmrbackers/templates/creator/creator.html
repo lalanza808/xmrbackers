@@ -7,10 +7,17 @@
 		<div id="page-wrapper">
 
 				{% include 'includes/header.html' %}
-				
+
 				{% if creator %}
           <h1>{{ creator.user.username }}</h1>
           <p>Bio: {{ creator.bio }}</p>
+				{% endif %}
+
+				{% if posts %}
+					<h1>Posts</h1>
+					{% for post in posts %}
+						<p><a href="{{ url_for('post.show', post_id=post.id) }}">{{ post.id }} - {{ post.title }} - {{ post.post_date | humanize }}</a></p>
+					{% endfor %}
 				{% endif %}
 
 				{% include 'includes/footer.html' %}

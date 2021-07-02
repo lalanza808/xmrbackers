@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+
+	{% include 'includes/head.html' %}
+
+	<body class="is-preload landing">
+		<div id="page-wrapper">
+
+				{% include 'includes/header.html' %}
+
+				{% if subscription_meta %}
+				<h1>Subscribe</h1>
+				<p>Creator: <a href="{{ url_for('creator.show', username=subscription_meta.creator.user.username) }}">{{ subscription_meta.creator.user.username }}</a></p>
+				<p>ID: {{ subscription_meta.id }}</p>
+				<p>XMR: {{ subscription_meta.atomic_xmr | from_atomic }}</p>
+				<p>Address: {{ subscription_meta.wallet_address }}</p>
+				<p>Hours: {{ subscription_meta.number_hours }}</p>
+				{% endif %}
+
+				{% include 'includes/footer.html' %}
+
+		</div>
+
+		{% include 'includes/scripts.html' %}
+
+	</body>
+</html>

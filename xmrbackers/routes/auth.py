@@ -1,4 +1,3 @@
-import quart.flask_patch
 from quart import Blueprint, render_template
 from quart import flash, redirect, url_for
 from flask_login import login_user, logout_user, current_user
