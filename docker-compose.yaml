@@ -14,3 +14,13 @@ services:
     image: redis:latest
     ports:
       - 127.0.0.1:6379:6379
+  wallet:
+    build:
+      context: .
+      dockerfile: Dockerfile-monero
+    ports:
+      - 127.0.0.1:8000:8000
+    volumes:
+      - ./data/wallet:/data
+    command:
+      bash /run_wallet.sh "${XMR_WALLET_NETWORK}" "${XMR_WALLET_RPC_USER}:${XMR_WALLET_RPC_PASS}"

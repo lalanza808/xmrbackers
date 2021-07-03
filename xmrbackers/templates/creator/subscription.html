@@ -15,7 +15,7 @@
 				<p>XMR: {{ subscription_meta.atomic_xmr | from_atomic }}</p>
 				<p>Address: {{ subscription_meta.wallet_address }}</p>
 				<p>Hours: {{ subscription_meta.number_hours }}</p>
-				<form method="POST" action="{{ url_for('creator.confirm_subscription', creator_id=subscription_meta.creator.id) }}">
+				<form method="POST" action="{{ url_for('creator.confirm_subscription', subscription_id=subscription_meta.creator.id) }}">
 						{% for f in form %}
 							{% if f.name == 'csrf_token' %}
 								{{ f }}

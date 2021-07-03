@@ -4,8 +4,9 @@ from datetime import timedelta
 
 from redis import Redis
 
-from app.library.market import get_market_data
-from app import config
+# from xmrbackers.helpers import get_market_data
+from xmrbackers.library.market import get_market_data
+from xmrbackers import config
 
 
 class Cache(object):
